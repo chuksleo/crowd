@@ -8,14 +8,7 @@
                                 <h3>About</h3>
                             </div>
                             <div class="footer-widget_about_text">
-                             <?php
-                                    // $data['about'] = $this->about_model->get_about_by_id($id=4);
-                                   
-                                    // $about = $data['about']['content'];
-                                    // echo substr($about, 0, 300);
-
-                            ?>
-                            <a href="<?php echo base_url()?>about-sydnet"> Read More...</a>
+                            
                             </div>
                             <form>
                                 <div class="footer_input-box">
@@ -63,7 +56,7 @@
                    <div class="site_footer_bottom_icon">
                       
                    </div>
-                    <p>@ All copyright 2020, <a href="#">Sydnet Solutions</a></p>
+                    <p>@ All copyright 2020, <a href="#">Donofund</a></p>
                 </div>
                 <div class="site-footer__social">
                     <a href="#" class="tw-clr"><i class="fab fa-twitter"></i></a>
@@ -75,7 +68,7 @@
 
 
 
-<div style="text-align: center;">Website Desiged by <a href="https://kodemark-technologies.business.site" target="_blank">Kodemark Technologies</a></div>
+
         </div>
 
 
@@ -103,7 +96,7 @@
             <div class="side-menu__sep"></div><!-- /.side-menu__sep -->
 
             <div class="side-menu__content">
-                <p><a href="mailto:needhelp@tripo.com">needhelp@kodemarktech.com</a> <br> <a href="tel:<?php //echo $settings['phone'] ?>"><?php //echo $settings['phone'] ?>
+                <p><a href="mailto:"></a> <br> <a href="tel:<?php //echo $settings['phone'] ?>"><?php //echo $settings['phone'] ?>
                         </a></p>
                 <div class="side-menu__social">
                     <a href="<?php echo $settings['fb_link'] ?>"><i class="fab fa-facebook-square"></i></a>
