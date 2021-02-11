@@ -87,7 +87,8 @@ function payWithPaystack() {
   var amount = $('input#amount').val();
  
   var handler = PaystackPop.setup({
-    key: 'pk_test_dd87a5df97a4abf3c3cea7e07d0167ad4aeaea4a', // Replace with your public key
+    key: 'pk_test_dd87a5df97a4abf3c3cea7e07d0167ad4aeaea4a',
+    // key: 'pk_live_2102e50beab71e0a9fd3f503e1a8231d6f355e96', // Replace with your public key
     email: email,
     amount: amount * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
     currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
@@ -132,20 +133,6 @@ function makeRef(country, length) {
 //function savePayment(amount, name, email, country, refCode, campaign, user, comment, ananymous){
 function savePayment(amount, name, email, country, refCode, campaign, user, comment, ananymous){
  
-   console.log("THIS IS REF2 FINAL: ");
-   console.log(amount);
-   console.log(name);
-   console.log(email);
-   console.log(country);
-   console.log(refCode);
-   console.log(campaign);
-   console.log(user);
-   console.log(comment);
-   console.log(ananymous);
-
-
-
-
     $.ajax({
       type: 'POST',
       url: '<?php echo base_url(); ?>donation/makePayment',
@@ -308,24 +295,24 @@ function savePayment(amount, name, email, country, refCode, campaign, user, comm
                                                         <a class="dropdown-item" href="https://fundme.miguelvasquez.net/panel/admin">Panel Admin</a>
                                         <div class="dropdown-divider"></div>
                                       
-                                      <a href="https://fundme.miguelvasquez.net/dashboard" class="dropdown-item">
+                                      <a href="#" class="dropdown-item">
                                         Dashboard
                                         </a>
 
-                                      <a href="https://fundme.miguelvasquez.net/dashboard/campaigns" class="dropdown-item">
+                                      <a href="#" class="dropdown-item">
                                       Campaigns
                                         </a>
 
-                                      <a href="https://fundme.miguelvasquez.net/user/likes" class="dropdown-item">
+                                      <a href="#" class="dropdown-item">
                                         Likes
                                         </a>
 
-                                      <a href="https://fundme.miguelvasquez.net/account" class="dropdown-item">
+                                      <a href="#" class="dropdown-item">
                                         Account Settings
                                         </a>
                                         <div class="dropdown-divider"></div>
 
-                                      <a href="https://fundme.miguelvasquez.net/logout" class="logout dropdown-item">
+                                      <a href="#" class="logout dropdown-item">
                                         Log out
                                       </a>
 
@@ -354,7 +341,7 @@ function savePayment(amount, name, email, country, refCode, campaign, user, comm
                                     
                                 </li>
                                 <li class="dropdown">
-                                    <a href="<?php echo base_url() ?>about-sydnet">FUNDRAISER FOR</a>
+                                    <a href="<?php echo base_url() ?>#">FUNDRAISER FOR</a>
                                     <ul>
                                          <?php foreach ($categories as $cat): ?>
                                             <li><a href="<?= base_url() ?>category/<?= $cat->title ?>/<?= $cat->catId ?>"><?= $cat->title ?></a></li>

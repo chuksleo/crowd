@@ -87,6 +87,7 @@ class Donation extends CI_Controller {
         $data['is_loggedin'] = $this->ion_auth->logged_in();  
         $data['categories'] = $this->project_category_model->getCategories();   
         $data['countries'] = $this->country_model->get_all_countries(); 
+        $data['cat_title'] = $title;
         $donors = $this->donation_model->get_donations_count_bycampaignId($campaignid);
         if($donors == null){
             $donors = 0;
@@ -121,7 +122,11 @@ class Donation extends CI_Controller {
 
             $message_resp = "";
             if($this->donation_model->set_donation($uid, $name, $campaignid, $email, $amount, $country, $tnumber, $paymentgatway, $ananymous, $comment)){
-                 $message_resp = '<div class="alert alert-success" role="alert" data-alert="">Your Payment Notification has been sent succesfully. Our Online Agent will respond Soon Thanks for your Surpport And Care<a class="close" href="#">x</a></div>';
+                
+                $this->campaign_model->updateAmountRaised($campaignid, $amount);
+
+
+                $message_resp = '<div class="alert alert-success" role="alert" data-alert="">Your Payment Notification has been sent succesfully. Our Online Agent will respond Soon Thanks for your Surpport And Care<a class="close" href="#">x</a></div>';
 
 
             }else{

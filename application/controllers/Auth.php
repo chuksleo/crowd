@@ -82,6 +82,7 @@ class Auth extends CI_Controller {
                 'type' => 'password',
             );
             $this->data['categories'] = $this->project_category_model->getCategories();
+            $this->data['page_title'] = "Login | DONOFUND: Africa #1 Fundraising Platform for Crowdfunding ";
             $this->_render_page('auth/login', $this->data);
         }
     }
@@ -190,6 +191,7 @@ class Auth extends CI_Controller {
             // set any errors and display the form
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
             $this->data['categories'] = $this->project_category_model->getCategories();
+            $this->data['page_title'] = "Forgot Password | DONOFUND: Africa #1 Fundraising Platform for Crowdfunding ";
             $this->_render_page('auth/forgot_password', $this->data);
         } else {
             $identity_column = $this->config->item('identity', 'ion_auth');
@@ -452,7 +454,7 @@ class Auth extends CI_Controller {
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
             $this->data['categories'] = $this->project_category_model->getCategories();
-
+             $this->data['page_title'] = "Register | DONOFUND: Africa #1 Fundraising Platform for Crowdfunding ";
             $this->_render_page('auth/create_user', $this->data);
         }
     }

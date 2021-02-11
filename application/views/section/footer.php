@@ -96,12 +96,12 @@
             <div class="side-menu__sep"></div><!-- /.side-menu__sep -->
 
             <div class="side-menu__content">
-                <p><a href="mailto:"></a> <br> <a href="tel:<?php //echo $settings['phone'] ?>"><?php //echo $settings['phone'] ?>
+                <p><a href="mailto:"></a> <br> <a href="tel:">
                         </a></p>
                 <div class="side-menu__social">
-                    <a href="<?php echo $settings['fb_link'] ?>"><i class="fab fa-facebook-square"></i></a>
-                    <a href="<?php echo $settings['twitter_link'] ?>"><i class="fab fa-twitter"></i></a>
-                    <a href="<?php echo $settings['phone'] ?>"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                    
                 </div>
             </div>

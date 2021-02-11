@@ -3,9 +3,13 @@
 //Loading header
 $data['title'] = 'Login';
 $data['javascript'] = 'app.js';
+$data['page_title'] = "DONOFUND: $cat_title Fundraising - Start Fundraiser ";
+
 $this->load->view('section/header', $data);
 
 $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
+
+ $link_text = $this->campaign_model->cleanTitle($campaign->Title);
 ?>
 
  <!--Project Details Top-->
@@ -19,7 +23,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-7 col-lg-7">
+                    <div class="col-xl-5 col-lg-5">
                         <div class="project_details_image">
 
                         <?php if($campaign->image == null){ ?>    <img src="<?php echo base_url()?>assets/images/project/project_details_img-1.jpg" alt=""> <?php }else{ ?>
@@ -29,8 +33,11 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
 
                           <?php } ?>
                         </div>
+
+
+
                     </div>
-                    <div class="col-xl-5 col-lg-5">
+                    <div class="col-xl-7 col-lg-7">
                         <div class="project_details_right">
                             <div class="project_details_right_top">
                                 <ul class="project_details_rate_list list-unstyled">
@@ -61,6 +68,14 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                     </div>
                                     <div class="content">
                                         <p><?php echo $campaign->title ?></p>
+
+
+                                        <?php if($campaign->StatusId == 4){ ?> 
+
+
+                                              <div class="alert alert-warning"><p>This Campaign has been suspended or not published for some reasons please contact <span>suspensions@donofund.com </span>for more details</p></div>
+
+                                         <?php }?>
                                     </div>
                                 </li>
                                 <li>
@@ -68,18 +83,18 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                         <img src="assets/images/project/flag.png" alt="">
                                     </div>
                                     <div class="content">
-                                        <p>United Kingdom</p>
+                                        <p>Nigeria</p>
                                     </div>
                                 </li>
                             </ul>
                             <div class="projects_details_bottom">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h5>$<?php echo $campaign->Current ?></h5>
+                                        <h5>₦<?php echo $campaign->Current ?></h5>
                                         <p>Raised</p>
                                     </li>
                                     <li>
-                                        <h5>$<?php echo $campaign->Amount ?></h5>
+                                        <h5>₦<?php echo $campaign->Amount ?></h5>
                                         <p>Goal</p>
                                     </li>
                                     <li>
@@ -90,18 +105,18 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                             </div>
                             <div class="project_details_btn_box">
                                 <a href="#" class="thm-btn follow_btn"><i class="fa fa-heart"></i>Like</a>
-                                <a href="<?php echo base_url() ?>donate/<?php echo str_replace(' ', '-', $campaign->Title) ?>/<?php echo $campaign->CampaignId ?>" class="thm-btn back_this_project_btn">Donate Now</a>
+                                <?php if($campaign->StatusId == 1){ ?> <a href="<?php echo base_url() ?>donate/<?php echo $link_text ?>/<?php echo $campaign->CampaignId ?>" class="thm-btn back_this_project_btn">Donate Now</a> <?php } ?>
+
+                                  <?php if($this->ion_auth->is_admin()){ ?><a href="<?php echo base_url() ?>user-campaign/publish/<?php echo $campaign->CampaignId ?>" class="thm-btn back_this_project_btn"> Publish</a>  <?php } ?>   
                             </div>
                             <div class="project_detail_share_box">
                                 <div class="share_box_title">
-                                    <h2>Share with friends</h2>
+                                    <button class="btn btn-primary btn-lg"  title="Share this content" data-toggle="modal" data-target="#myModal">
+  <i class="fa fa-share-alt"></i> Share 
+</button>
+
                                 </div>
-                                <div class="project_detail__social">
-                                    <a href="#" class="tw-clr"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="fb-clr"><i class="fab fa-facebook-square"></i></a>
-                                    <a href="#" class="dr-clr"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" class="ins-clr"><i class="fab fa-instagram"></i></a>
-                                </div>
+                                
                             </div>
                             <div class="project_details_text_box">
                                 <p><span>All or nothing</span>. This project will only be funded if it reaches its goal by Tue, January 28 2020 4:59 AM UTC +00:00.</p>
@@ -111,6 +126,41 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                 </div>
             </div>
         </section>
+
+
+
+<div class="container">
+  <div class="row">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        
+      </div>
+      <div class="modal-body">
+        <div class="project_detail__social">
+                                    <a href="#" class="tw-clr"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="fb-clr"><i class="fab fa-facebook-square"></i></a>
+
+                                    <a href="#" class="fb-clr"><i class="fab fa-email-square"></i></a>
+
+                                    <a href="#" class="fb-clr"><i class="fab fa-watsapp-square"></i></a>
+                                    
+                                </div>
+        
+        
+               
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div>
 
         <section class="project_details_tab_box">
             <div class="container">
@@ -185,7 +235,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                     <div class="project_detail_update">
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <div class="project_detail_update_single">
+                            <!--                     <div class="project_detail_update_single">
                                                     <h4>#1 Update</h4>
                                                     <h3>Wow! What an incredible first day!</h3>
                                                     <div class="person_detail_box">
@@ -204,7 +254,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                     </div>
                                                     <p class="project_detail_update_first_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate sed mauris vitae pellentesque. Nunc ut ullamcorper libero. Aenean fringilla mauris quis risus laoreet interdum. Quisque imperdiet orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci quis, convallis hendrerit nisl. Cras auctor nec purus at placerat.</p>
                                                     <p class="project_detail_update_last_text">Quisque consectetur, lectus in ullamcorper tempus, dolor arcu suscipit elit, id laoreet tortor justo nec arcu. Nam eu dictum ipsum. Morbi in mi eu urna placerat finibus a vel neque. Nulla in ex at mi viverra sagittis ut non erat. Praesent nec congue elit. Nunc arcu odio, convallis a lacinia ut, tristique id eros. Suspendisse leo erat, pellentesque et commodo vel, varius in felis. Nulla mollis turpis porta justo eleifend volutpat.</p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                 
                                         </div>
@@ -215,7 +265,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                     <div class="project_detail_comment_box">
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <div class="project_detail_comment_box_inner">
+                                               <!--  <div class="project_detail_comment_box_inner">
                                                     <h3 class="project_detail_comment_title">2 Comments</h3>
                                                     <div class="project_detail_comment_single">
                                                         <div class="project_detail_comment_image">
@@ -235,7 +285,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                             <p>Lorem Ipsum is simply dummy text of the rinting and typesetting been the industry standard dummy text ever sincer condimentum purus. In non ex at ligula fringilla lobortis. Aliquam hendrerit a augue insuscipit. Etiam aliquam massa quis des mauris commodo.</p>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="col-xl-12">
                                                 <div class="project_detail_leave_comment__box">

@@ -42,7 +42,12 @@ $this->load->view('section/admin/header', $data);
                                                 <td><?php echo $campaign->StatusTitle ?></td>
                                                  <td><?php echo $campaign->DateCreated?></td>
                                                   <td><?php echo $campaign->EndDate ?></td>
-                                                   <td><a href="<?php base_url() ?>user-campaign/edit/<?php echo $campaign->CampaignId ?>" class="btn btn-square btn-primary mb-2"> Edit</a></td>
+                                                   <td>
+                                                   <?php  $link_text = $this->campaign_model->cleanTitle($campaign->Title);?>
+                                                  <a href="<?php echo base_url() ?>campaign/<?php echo $link_text ?>/<?php echo $campaign->CampaignId ?>" class="btn btn-square btn-primary mb-2" target="_blank"> View</a>  
+
+
+                                                   <a href="<?php base_url() ?>user-campaign/edit/<?php echo $campaign->CampaignId ?>" class="btn btn-square btn-primary mb-2"> Edit</a></td>
                                             </tr>
                                          <?php endforeach ?> 
 

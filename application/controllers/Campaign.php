@@ -46,7 +46,6 @@ class Campaign extends CI_Controller {
 
 
 
-
     public function all () {
         $data['is_loggedin'] = $this->ion_auth->logged_in();       
         $data['campaigns'] = $this->campaign_model->get_all_campaigns();
@@ -76,6 +75,7 @@ class Campaign extends CI_Controller {
         if($donors == null){
             $donors = 0;
         }
+        $data['cat_title'] = $title;
         $data['donors'] = $donors;
         $data['percentage'] = $this->campaign_model->getPercentageRaised($data['campaign']->Amount, $data['campaign']->Current);
         
@@ -96,7 +96,12 @@ class Campaign extends CI_Controller {
         return $formatedDate;
 
     }
-    
+
+
+
+
+
+     
     public function create () {
         $data['is_loggedin'] = $this->ion_auth->logged_in();
         $data['action'] = "create";
@@ -113,7 +118,7 @@ class Campaign extends CI_Controller {
            
             $EndDate = $this->getFormatedDate($this->input->post("EndDate"));
             
-            $this->campaign_model->create_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 1, $uid, $pic['file_name'] );
+            $this->campaign_model->create_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 5, $uid, $pic['file_name'] );
             redirect('/campaign', 'refresh');
         }
         $path = './js/ckfinder';
@@ -176,6 +181,17 @@ class Campaign extends CI_Controller {
         // print_r($data['campaign']);
         $this->editor($path, $width);
         $this->load->view("campaign/edit" , $data);
+    }
+
+
+
+
+    public function publish($id) {
+          
+            $campaignId = $this->campaign_model->publish_campaign($id);
+            redirect('/admin/all-campaign', 'refresh');
+       
+      
     }
 
 

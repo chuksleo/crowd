@@ -14,7 +14,7 @@ $this->load->view('section/header', $data);
             <div class="container">
                 <h2><?php echo $cat_title ?> Campaigns</h2>
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="<?php echo base_url()?>">Home</a></li>
                     <li><span>Category</span></li>
                      <li><span><?php echo $cat_title ?></span></li>
                 </ul>
@@ -35,6 +35,7 @@ $this->load->view('section/header', $data);
 
                       $percentage = $this->campaign_model->getPercentageRaised($campaign->Amount, $campaign->Current);
                       $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
+                      $link_text = $this->campaign_model->cleanTitle($campaign->Title);
 
                          ?>
 
@@ -49,7 +50,7 @@ $this->load->view('section/header', $data);
                             <div class="projects_one_content">
                                 <div class="porjects_one_text">
                                     <p><span>by</span> <?php echo $campaign->first_name. " ". $campaign->last_name ;?></p>
-                                    <h3><a href="<?php echo base_url() ?>campaign/<?php echo str_replace(' ', '-', $campaign->Title) ?>/<?php echo $campaign->CampaignId?>"><?php echo $campaign->Title ?></a></h3>
+                                    <h3><a href="<?php echo base_url() ?>campaign/<?php echo $link_text ?>/<?php echo $campaign->CampaignId?>"><?php echo $campaign->Title ?></a></h3>
                                 </div>
                                 <div class="progress-levels">
                                 <!--Skill Box-->
@@ -85,11 +86,11 @@ $this->load->view('section/header', $data);
                             <div class="projects_one_bottom">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <h5>$<?php echo $campaign->Current ?></h5>
+                                        <h5>₦<?php echo $campaign->Current ?></h5>
                                         <p>Raised</p>
                                     </li>
                                     <li>
-                                        <h5>$<?php echo $campaign->Amount ?></h5>
+                                        <h5>₦<?php echo $campaign->Amount ?></h5>
                                         <p>Goal</p>
                                     </li>
                                     <li>

@@ -3,6 +3,7 @@
 //Loading header
 $data['title'] = 'Login';
 $data['javascript'] = 'app.js';
+$data['page_title'] = "DONOFUND: $cat_title Fundraising - Start Fundraiser ";
 $this->load->view('section/header', $data);
 ?>
  

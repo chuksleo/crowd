@@ -13,7 +13,7 @@
                                     <div class="slider_icon"><img src="<?php echo base_url()?>assets/images/loader.png"
                                             alt=""></div>
                                     <div class="sub-title">Raising Money Has Never Been So Easy</div>
-                                    <h1>Crowdfunding &<br>Fundraising For Casues You care about</h1>
+                                    <h1>Fundraising For Casues You care about</h1>
                                    
                                     <div class="link-box">
                                         <a href="<?php echo base_url()?>campaign/create" class="thm-btn">Start a Campaign</a>
@@ -203,9 +203,9 @@
                        <?php foreach($campaigns as $campaign): 
 
                        $percentage = $this->campaign_model->getPercentageRaised($campaign->Amount, $campaign->Current);
-                      $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
+                       $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
 
-
+                      $link_text = $this->campaign_model->cleanTitle($campaign->Title);
 
 
                        ?>
@@ -220,7 +220,7 @@
                                 <div class="projects_one_content">
                                     <div class="porjects_one_text">
                                         <p><span>by</span> <?php echo $campaign->first_name. " ". $campaign->last_name ;?></p>
-                                        <h3><a href="project-details.html"><?php echo $campaign->Title ?></a></h3>
+                                        <h3><a href="<?php echo base_url() ?>campaign/<?php echo $link_text ?>/<?php echo $campaign->CampaignId?>"><?php echo $campaign->Title ?></a></h3>
                                     </div>
                                     <div class="progress-levels">
                                         <!--Skill Box-->
@@ -263,11 +263,11 @@
                                 <div class="projects_one_bottom">
                                     <ul class="list-unstyled">
                                         <li>
-                                            <h5>$<?php echo $campaign->Current ?></h5>
+                                            <h5>₦<?php echo $campaign->Current ?></h5>
                                             <p>Raised</p>
                                         </li>
                                         <li>
-                                            <h5>$<?php echo $campaign->Amount ?></h5>
+                                            <h5>₦<?php echo $campaign->Amount ?></h5>
                                             <p>Goal</p>
                                         </li>
                                         <li>
