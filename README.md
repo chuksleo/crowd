@@ -1,2 +1,2 @@
-# Havana_Crowdfunding
-Codeigniter crowdfunding module
+
+Crowd funding site
