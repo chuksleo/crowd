@@ -149,11 +149,24 @@ function savePayment(amount, name, email, country, refCode, campaign, user, comm
 
  }
 
+function copyLink() {
+  /* Get the text field */
+  var copyText = document.getElementById("pagelink");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied Link: " + copyText.value);
+} 
 
 
-
-        function subscribe_bottom()
-        {
+function subscribe_bottom()
+{
 
             console.log("btn cliced");
             var email_cont = $('input#email-address').val();
@@ -169,7 +182,7 @@ function savePayment(amount, name, email, country, refCode, campaign, user, comm
                 }
 
             });
-        }
+}
 
 
 

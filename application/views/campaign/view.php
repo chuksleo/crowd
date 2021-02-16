@@ -10,6 +10,20 @@ $this->load->view('section/header', $data);
 $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
 
  $link_text = $this->campaign_model->cleanTitle($campaign->Title);
+
+
+
+
+
+   if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+    
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
 ?>
 
  <!--Project Details Top-->
@@ -133,7 +147,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
   <div class="row">
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -141,22 +155,78 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
         
       </div>
       <div class="modal-body">
-        <div class="project_detail__social">
-                                    <a href="#" class="tw-clr"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="fb-clr"><i class="fab fa-facebook-square"></i></a>
+      <h2>Help by sharing</h2>
+        <p>Fundraisers shared on social networks raise up to 5x more</p>
+        <hr>
+        <div class="social-share">
+        <div class="col-sm-12">
 
-                                    <a href="#" class="fb-clr"><i class="fab fa-email-square"></i></a>
+          <ul>
+              <li class="share-list">
 
-                                    <a href="#" class="fb-clr"><i class="fab fa-watsapp-square"></i></a>
-                                    
-                                </div>
+
+              <a  href="http://twitter.com/share?url=<?php echo $url ?>&text=<?php echo $campaign->title ?>&hashtags=impactalifethroughDonofund" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/twitter.png"></a>
+              <p><label>Twitter</label></p>
+              </li>
+
+
+
+              <li class="share-list"> <a href="http://www.facebook.com/sharer.php?u=<?php echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/facebook.png"></a>
+                <p> <label>Facebook</label></p>
+              </li>
+
+
+              <li class="share-list"> <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/linkedin.png"></a>
+
+                 <p><label>Linkedin</label></p>
+              </li>  
+
+
+
+
+              <li class="share-list"><a  href="https://plus.google.com/share?url=<?php echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/google.png"></a>
+                 <p><label>Google+</label></p>
+              </li>
+
+
+
+              <li class="share-list"> <a href="mailto:?Subject=<?php echo $campaign->title ?>&Body=<?php echo $campaign->Description ?> <?php echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/email.png"></a>
+                 <p><label>Email</label></p>
+              </li>
+
+
+              <li class="share-list"> <a href="#" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/print.png"></a>
+                 <p><label>Print Poster</label></p>
+              </li>
+
+          </ul>
+
+          
+            
+          
+
+           
+
+
+
+
+
+        </div>
         
         
                
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input id="pagelink" type="text" name="" value="<?php echo $url ?>"> <span>
+        <button type="button" class="btn btn-lg btn-warning" onclick="copyLink()">Copy</button></span> 
       </div>
+
+       <div class="share-image">
+
+       <p><b>Tips:</b> Past Fundraiser link Anywere</p>
+       <img src="<?php echo base_url() ?>assets/images/icon/images.jpeg">
+
+       </div>
     </div>
   </div>
 </div>
