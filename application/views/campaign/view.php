@@ -230,7 +230,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
     </div>
   </div>
 </div>
-</div></div>
+</div></div></div>
 
         <section class="project_details_tab_box">
             <div class="container">
@@ -265,7 +265,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                            <p>Crochet designer and Creator of the Woolly Chic brand. Loves British wool and is passionate about the environment.</p>
                                                        </div>
                                                    </div>
-                                                   <div class="project_detail_pledge">
+                                                  <!--  <div class="project_detail_pledge">
                                                        <div class="title">
                                                            <h3>Pledge Without<br>A Reward</h3>
                                                        </div>
@@ -279,8 +279,8 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                        <div class="project_detail_btn">
                                                            <a href="#" class="thm-btn">Continue</a>
                                                        </div>
-                                                   </div>
-                                                   <div class="project_detail_rewards">
+                                                   </div> -->
+                                                  <!--  <div class="project_detail_rewards">
                                                        <h3>Pledge $50 or more</h3>
                                                        <p>Reward description goes here. Lorem ipsum dolor sit amet, piscing elit. Vivamus dictum congue nunc, sed interdum massa in.</p>
                                                        <div class="estimated_delivery_date">
@@ -294,7 +294,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                        <div class="project_detail_rewards_btn">
                                                            <a href="#" class="thm-btn">Select this Reward</a>
                                                        </div>
-                                                   </div>
+                                                   </div> -->
                                                </div>
                                            </div>
                                        </div>
