@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['pages/how-it-works'] = "pages/how";
 
 $route['donofund-blog'] = "blog";
+$route['donofund-support'] = "pages/contact";
 $route['category/(:any)/(:num)'] = 'campaign/category/$1/$2';
 $route['donofund-blog/(:num)/(:any)'] = 'blog/post/$1/$2';
 

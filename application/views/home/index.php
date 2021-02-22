@@ -13,7 +13,7 @@
                                     <div class="slider_icon"><img src="<?php echo base_url()?>assets/images/loader.png"
                                             alt=""></div>
                                     <div class="sub-title">Raising Money Has Never Been So Easy</div>
-                                    <h1>Fundraising For Casues You care about</h1>
+                                    <h1>Fundraising For Causes You care about</h1>
                                    
                                     <div class="link-box">
                                         <a href="<?php echo base_url()?>campaign/create" class="thm-btn">Start a Campaign</a>
@@ -35,7 +35,7 @@
                                     <div class="slider_icon"><img src="<?php echo base_url()?>assets/images/loader.png"
                                             alt=""></div>
                                     <div class="sub-title">Raising Money Has Never Been So Easy</div>
-                                    <h1>Crowdfunding &<br>Fundraising For Casues You care about</h1>
+                                    <h1>Crowdfunding &<br>Fundraising For Causes You care about</h1>
                                    
                                     <div class="link-box">
                                         <a href="<?php echo base_url()?>campaign/create" class="thm-btn">Start a Campaign</a>
@@ -59,36 +59,12 @@
                 style="background-image: url(assets/images/shapes/categories_one-shape-1.png)"></div>
             <div class="container">
              <div class="block-title text-center">
-                    <h3>Explore Campaign(s) By Category</h3>
+                    <h3> <?php echo ($this->settings_model->getStaticContent('home_header_one')) ?> </h3>
                 </div>
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="categories_one_content">
-
-                    <?php foreach($categories as $category):?>
-
-                            <div id="first_cat" class="categories_one_single" >
-                                <div class="categories_one_icon">
-                                <img class="category-list" src="<?php echo base_url() ?>assets/images/investigator-sarasota.jpg">
-                                    <span class="" ></span>
-                                </div>
-                                <h4><?php echo $category->title ?></h4>
-                            </div>
-
-                     <?php endforeach ?>
-
-                     <?php foreach($categories as $category):?>
-
-                            <div id="fsecond_cat" class="categories_one_single" style="display: none" >
-                                <div class="categories_one_icon">
-                                <img class="category-list" src="<?php echo base_url() ?>assets/images/investigator-sarasota.jpg">
-                                    <span class="" ></span>
-                                </div>
-                                <h4><?php echo $category->title ?></h4>
-                            </div>
-
-                     <?php endforeach ?>
-
+                        <div class="">
+                            <?php echo ($this->settings_model->getStaticContent('home_text_one')) ?>                         
                     
                                 
                             </div>
@@ -118,10 +94,10 @@
                                 <div class="sec__title_icon">
                                     <img src="assets/images/icon/sec__title_two_icon.png" alt="">
                                 </div>
-                                <h2>Get Help And Save What Matters To You</h2>
+                                <h2><?php echo ($this->settings_model->getStaticContent('home_header_two')) ?></h2>
                             </div>
                             <div class="about_one_text">
-                                <p>The best way to not feel hopeless is to get up and do something. Don’t wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope</p>
+                              <?php echo ($this->settings_model->getStaticContent('home_text_two')) ?>
                             </div>
                             <div class="">
                                 <a href="<?php echo base_url()?>campaign/create" class="thm-btn">Start A Campaign</a>
@@ -302,8 +278,8 @@
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="creator_funded_left">
-                            <p>Creator-Founded Company</p>
-                            <h2>Helping Creators<br>Build Membership<br>Businesses </h2>
+                            
+                            <h2><?php echo ($this->settings_model->getStaticContent('home_header_four')) ?> </h2>
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -347,7 +323,7 @@
                     <div class="block_title_icon">
                         <img src="assets/images/icon/sec__title_two_icon.png" alt="">
                     </div>
-                    <p>Our Customers Testimonials</p>
+                    <p>Our Beneficiaries Testimonials</p>
                     <h3>What They Say</h3>
                 </div>
                 <div class="row">
@@ -461,22 +437,5 @@
         </section>
 
 
-        <!--Categories Two Start-->
-        <div class="categories_two">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <ul class="categories_two_menu list-unstyled">
-                            <li><a href="#">Fashion</a></li>
-                            <li class="active"><a href="#">Design</a></li>
-                            <li><a href="#">Film & Video</a></li>
-                            <li><a href="#">Games</a></li>
-                            <li><a href="#">Health & Fitness</a></li>
-                            <li><a href="#">Technology</a></li>
-                            <li><a href="#">Education</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 

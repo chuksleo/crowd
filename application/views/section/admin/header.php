@@ -54,10 +54,10 @@
                 <li>
                     <a href="<?php echo base_url() ?>withdrawal"><i class="fas fa-chart-bar"></i> Withdrawals</a>
                 </li>
-                <li>
+               <!--  <li>
                     <a href="<?php echo base_url() ?>#"><i class="fas fa-cog"></i>Account Settings</a>
                 </li>
-
+ -->
                 <?php }else{?>
                <li>
                     <a href="<?php echo base_url() ?>admin/dashboard"><i class="fas fa-home"></i> Dashboard</a> 
@@ -82,9 +82,22 @@
                 <li>
                     <a href="<?php echo base_url() ?>admin/members"><i class="fas fa-chart-bar"></i> Members</a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url() ?>#"><i class="fas fa-cog"></i>Account Settings</a>
+
+                  <li>
+                    <a href="#pagesmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-copy"></i> Settings</a>
+                    <ul class="collapse list-unstyled" id="pagesmenu">
+                        <li>
+                            <a href="<?php echo base_url() ?>admin/settings"><i class="fas fa-cog"></i>Site Settings</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url() ?>admin/static_languages"><i class="fas fa-info-circle"></i> Static Languages</a>
+                        </li>
+                        <!-- <li>
+                            <a href="500.html"><i class="fas fa-info-circle"></i> 500 Error page</a>
+                        </li> -->
+                    </ul>
                 </li>
+                
 
                 <?php } ?>
             </ul>

@@ -6,7 +6,7 @@ class Pages extends CI_Controller {
 	{
 		parent::__construct();
 
-
+		$this->load->model('settings_model');
 
 
 
@@ -35,16 +35,20 @@ class Pages extends CI_Controller {
 
 			show_404();
 		}
-	   // $data['uname'] = $this->session->userdata('username');
-
-		//$data['dealer_id'] = $this->tank_auth->get_user_id();
-		$data['categories'] = $this->project_category_model->getCategories();
+	   
 		$data['site_description'] = lang('contact_page_description');
-		$data['site_title'] = lang('contact_page_title');
+		$data['page_title'] = "DONOFUND: Contact ";
+		$data['page_name'] = "Contact us";
+		$data['settings_content'] = $this->settings_model->get_all_settings();
+		$data['settings'] = $data['settings_content'];
 
-		$this->load->view('page_section/header', $data);
+		
+		$data['categories'] = $this->project_category_model->getCategories($num=10);
+
+
+		$this->load->view('section/header', $data);
 		$this->load->view('pages/'.$page, $data);
-		$this->load->view('page_section/footer', $data);
+		$this->load->view('section/footer', $data);
 
         }
 
@@ -77,7 +81,7 @@ class Pages extends CI_Controller {
 
 		//$data['site_description'] = lang('about_page_description');
 		$data['page_title'] = "DONOFUND: How Donofund works";
-		$data['categories'] = $this->project_category_model->getCategories();
+		$data['categories'] = $this->project_category_model->getCategories($num=10);
 		$this->load->view('section/header', $data);
 		$this->load->view('pages/'.$page);
 		$this->load->view('section/footer');

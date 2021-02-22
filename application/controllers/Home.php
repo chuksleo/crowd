@@ -26,7 +26,7 @@ class Home extends CI_Controller {
         //     $data['project'] = $this->campaign_model->campaign_model();
         // }
         $data['feturedpost'] = $this->blog_model->get_featured_post();
-        $data['categories'] = $this->project_category_model->getCategories();
+        $data['categories'] = $this->project_category_model->getCategories($num=10);
         $data['campaigns'] = $this->campaign_model->get_campaigns_limit();
         $data['testimonials'] = $this->testimonial_model->get_front_testimony();
         $data['is_loggedin'] = $this->ion_auth->logged_in();

@@ -110,25 +110,3 @@
                 </div>
             </div>
         </section>
-
-       
-
-        <!--Categories Two Start-->
-        <div class="categories_two">
-               <div class="container">
-                   <div class="row">
-                       <div class="col-xl-12">
-                           <ul class="categories_two_menu list-unstyled">
-                               <li><a href="#">Fashion</a></li>
-                               <li class="active"><a href="#">Design</a></li>
-                               <li><a href="#">Film & Video</a></li>
-                               <li><a href="#">Games</a></li>
-                               <li><a href="#">Health & Fitness</a></li>
-                               <li><a href="#">Technology</a></li>
-                               <li><a href="#">Education</a></li>
-                           </ul>
-                       </div>
-                   </div>
-               </div>
-           </div>
-

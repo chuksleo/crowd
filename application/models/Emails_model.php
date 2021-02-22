@@ -10,7 +10,7 @@ class Emails_model extends CI_Model {
 	public function user_contact()
 	{
 		// format date string
-			$datestring = "%Y-%m-%d - %h:%i:%a";
+			$datestring = "%Y-%m-%d %h:%i:%s";
 
 			// get stytem current time
 			$time = time();
@@ -25,6 +25,8 @@ class Emails_model extends CI_Model {
 			'subject' => $this->input->post('subject_val'),
 			'contact_message' => $this->input->post('message_val'),
 			'date_created' => $cur_date,
+			'last_updated' => $cur_date,
+			'view_status' => 0,
 
 
 

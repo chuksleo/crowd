@@ -55,7 +55,7 @@ class Campaign extends CI_Controller {
 
 
     public function category ($title, $catid) {
-        $data['categories'] = $this->project_category_model->getCategories();
+        $data['categories'] = $this->project_category_model->getCategories($num=10);
         $data['cat_title'] = $title;  
         $data['is_loggedin'] = $this->ion_auth->logged_in();       
         $data['campaigns'] = $this->campaign_model->get_category_campaigns($catid);
@@ -69,7 +69,7 @@ class Campaign extends CI_Controller {
 
     public function view ($title, $campaignid) {
         $data['is_loggedin'] = $this->ion_auth->logged_in();  
-        $data['categories'] = $this->project_category_model->getCategories();     
+        $data['categories'] = $this->project_category_model->getCategories($num=10);     
         $data['campaign'] = $this->campaign_model->get_campaign_byId($campaignid);
         $donors = $this->donation_model->get_donations_count_bycampaignId($campaignid);
         if($donors == null){
@@ -227,7 +227,7 @@ class Campaign extends CI_Controller {
         }
         $path = './js/ckfinder';
         $width = '850px';
-        $data['categories'] = $this->project_category_model->getCategories();
+        $data['categories'] = $this->project_category_model->getCategories($num=10);
         $this->editor($path, $width);
         $this->load->view("campaign/report_campaign" , $data);
     }

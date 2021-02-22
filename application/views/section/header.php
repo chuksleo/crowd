@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php //$settings_data = $this->settings_model->get_all_settings();
-      //$settings = $settings_data[0];
+<?php 
+      $settings = $this->settings_model->get_all_settings();
 
 ?>
 
@@ -185,8 +185,7 @@ function subscribe_bottom()
 }
 
 
-
-        function contact_us()
+function contact_us()
         {
             //$('input#loader').show();
             var fname = $('input#contact_fname').val();
@@ -199,9 +198,6 @@ function subscribe_bottom()
                 type: 'POST',
                 url: '<?php echo base_url(); ?>email/contact',
                 data: {'fname_val':fname,'lname_val':lname,'email_val':email,'phone_val':phone,'subject_val':subject,'message_val':message},
-
-                //data: 'email_vals='+email,
-
                 success: function(resp) {
 
                     //$('#prog').hide();
@@ -210,7 +206,6 @@ function subscribe_bottom()
 
             });
         }
-
 
         function showAllCategories()
         {
@@ -277,7 +272,7 @@ function subscribe_bottom()
 
             <div class="site-header__header-one-wrap-left">
                 <a href="<?php echo base_url()?>" class="main-nav__logo">
-                    <img src="<?php echo base_url()?>assets/images/resources/logo.png" class="main-logo" alt="Awesome Image">
+                    <img class="main-logo"  src="<?php echo base_url()?>assets/uploads/files/<?php echo($settings['logo']); ?>" class="main-logo" alt="<?php echo($settings['site_name']); ?>">
                 </a>
             </div>
 
@@ -290,7 +285,7 @@ function subscribe_bottom()
                      <nav class="header-navigation">
                     <div class="main-nav__header-one-top-left">
                         <ul class=" main-nav__navigation-box">
-                            <li><a href="#"> <i class="icon-conversation"></i> Customer Support</a></li>
+                            <li><a href="<?php echo base_url() ?>donofund-support"> <i class="icon-conversation"></i> Customer Support</a></li>
                             <?php if ($this->ion_auth->logged_in() == false) { ?>
                              <li><a href="<?= base_url() ?>auth/login"> <i class="icon-user"></i> Login</a></li>
                               <li><a href="<?= base_url() ?>auth/create_user"> <i class="icon-conversation"></i> Register</a></li>
@@ -361,6 +356,9 @@ function subscribe_bottom()
 
 
                                         <?php endforeach ?>
+                                         <li><a class="thm-btn" href="#">View More..</a></li>
+
+
                                     </ul><!-- /.sub-menu -->
                                 </li>
                                 <li class="">
@@ -372,6 +370,12 @@ function subscribe_bottom()
                                   
                                 </li>
                                 
+
+                                <li class="dropdown">
+                                    <a href="<?php echo base_url() ?>donofund-support""><?php  echo "CONTACT US" ?></a>
+                                  
+                                </li>
+                                
                                 
                             </ul>
                         </div><!-- /.navbar-collapse -->
@@ -379,8 +383,8 @@ function subscribe_bottom()
                         <div class="main-nav__right">
                             <div class="phone-mail-box">
                                 <ul>
-                                    <li><span class="fas fa-envelope"></span><a href="mailto:"></a></li>
-                                    <li><span class="fa fa-phone"></span><a href="tel:"></a></li>
+                                    <!-- <li><span class="fas fa-envelope"></span><a href="mailto:"></a></li>
+                                    <li><span class="fa fa-phone"></span><a href="tel:"></a></li> -->
                                 </ul>
                             </div>
                             <div class="icon-search-box">
