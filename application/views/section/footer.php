@@ -1,4 +1,26 @@
  <!--Site Footer Start-->
+ <?php $categories = $this->project_category_model->getCategories($num=5);?>
+
+  <!--Categories Two Start-->
+        <div class="categories_two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <ul class="categories_two_menu list-unstyled">
+                        <?php foreach($categories as $cat): ?>
+                          
+                            <li><a href="#"><?php echo $cat->title ?></a></li>
+                        <?php  endforeach ?>
+                        <li><a class="thm-btn" href="#">More.. </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <footer class="site-footer">
             <div class="container">
                 <div class="row">

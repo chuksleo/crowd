@@ -13,7 +13,7 @@ class Blog extends CI_Controller {
 	public function index($start=0)
         {
 
-        $data['categories'] = $this->project_category_model->getCategories();
+        $data['categories'] = $this->project_category_model->getCategories($num=10);
 
 
 		$num =12;

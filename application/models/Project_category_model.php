@@ -9,7 +9,7 @@
 /**
  * Projects Category Model
  *
- * @author Anton Lungameni
+ * @author Chukwuka Chime
  */
 class Project_category_model extends CI_Model {
     //put your code here
@@ -23,8 +23,10 @@ class Project_category_model extends CI_Model {
      * Gets all project categories in db 
      * @return type
      */
-    public function getCategories() {
-        $query = $this->db->get('categories');
+    public function getCategories($num=FALSE) {
+
+        $this->db->select()->from('categories AS c')->limit($num);
+        $query = $this->db->get();
         return $query->result();
     }
 

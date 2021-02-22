@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Ion_auth_model', 'project_category_model', 'project_model', 'pledge_model', 'campaign_model');
+$autoload['model'] = array('Ion_auth_model', 'project_category_model', 'project_model', 'pledge_model', 'campaign_model', 'settings_model');

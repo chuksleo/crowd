@@ -253,7 +253,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                            </div>
                                            <div class="col-xl-4 col-lg-4">
                                                <div class="project_details_right_content">
-                                                   <div class="project_detail_creator">
+                                                   <!-- <div class="project_detail_creator">
                                                        <div class="project_detail_creator_image">
                                                            <img src="assets/images/project/person-img-1.png" alt="">
                                                        </div>
@@ -264,7 +264,7 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                                                        <div class="project_detail_creator_text">
                                                            <p>Crochet designer and Creator of the Woolly Chic brand. Loves British wool and is passionate about the environment.</p>
                                                        </div>
-                                                   </div>
+                                                   </div> -->
                                                   <!--  <div class="project_detail_pledge">
                                                        <div class="title">
                                                            <h3>Pledge Without<br>A Reward</h3>
