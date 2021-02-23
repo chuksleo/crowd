@@ -1,5 +1,5 @@
  <!--Site Footer Start-->
- <?php $categories = $this->project_category_model->getCategories($num=5);?>
+ <?php $categories = $this->project_category_model->getCategories($num=4);?>
 
   <!--Categories Two Start-->
         <div class="categories_two">
@@ -9,9 +9,9 @@
                         <ul class="categories_two_menu list-unstyled">
                         <?php foreach($categories as $cat): ?>
                           
-                            <li><a href="#"><?php echo $cat->title ?></a></li>
+                            <li><a href="<?= base_url() ?>category/<?= $cat->title ?>/<?= $cat->catId ?>"><?php echo $cat->title ?></a></li>
                         <?php  endforeach ?>
-                        <li><a class="thm-btn" href="#">More.. </a></li>
+                        <li><a class="thm-btn" href="<?php echo base_url() ?>donofund-categories">More.. </a></li>
                         </ul>
                     </div>
                 </div>
