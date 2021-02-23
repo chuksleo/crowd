@@ -40,6 +40,20 @@ class Category extends CI_Controller {
 
 
 
+    public function public_list() {
+        
+       
+
+       
+            $data['is_loggedin'] = $this->ion_auth->logged_in();
+            $uid = $this->ion_auth->get_user_id();
+            $data['categories'] = $this->project_category_model->getCategories();
+            $this->load->view("category/list" , $data);
+
+
+       
+       
+    }
 
 
 

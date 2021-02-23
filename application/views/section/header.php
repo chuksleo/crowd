@@ -356,7 +356,7 @@ function contact_us()
 
 
                                         <?php endforeach ?>
-                                         <li><a class="thm-btn" href="#">View More..</a></li>
+                                         <li><a class="thm-btn" href="<?php echo base_url() ?>donofund-categories">View More..</a></li>
 
 
                                     </ul><!-- /.sub-menu -->

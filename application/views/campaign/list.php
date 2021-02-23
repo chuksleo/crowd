@@ -10,7 +10,7 @@ $this->load->view('section/header', $data);
 
 ?>
 
-<section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-contact.jpg);">
+<section class="page-header" style="background-image: url(<?php echo base_url() ?>assets/images/resources/help.jpg);">
             <div class="container">
                 <h2><?php echo $cat_title ?> Campaigns</h2>
                 <ul class="thm-breadcrumb list-unstyled">
