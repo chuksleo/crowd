@@ -17,18 +17,18 @@ if (!defined('BASEPATH'))
 class Campaign_model extends CI_Model {
 
     //put your code here
-    public $CampaignId; 
-    public $image;
-    public $Title;
-    public $UserId;    
-    public $EndDate;
-    public $Description;
-    public $StatusId;
-    public $Amount;
-    public $Beneficiary;
-    public $Current;
-    public $DateCreated;
-    public $DateModified;
+    // public $CampaignId; 
+    // public $image;
+    // public $Title;
+    // public $UserId;    
+    // public $EndDate;
+    // public $Description;
+    // public $StatusId;
+    // public $Amount;
+    // public $Beneficiary;
+    // public $Current;
+    // public $DateCreated;
+    // public $DateModified;
 
     
     public function get_all_campaigns(){
@@ -152,16 +152,38 @@ class Campaign_model extends CI_Model {
     }
     
     public function update_campaign($title, $categoryid, $amount, $endDate, $fullname, $description, $statusId, $uid, $image, $cid){
-        $this->CampaignId = $cid;
-        $this->Title = $title; 
-        $this->CategoryId = $categoryid; 
-        $this->image = $image; 
-        $this->Amount = $amount;
-        $this->Beneficiary = $fullname;
-        $this->Description = $description;
-        $this->StatusId = $statusId;
-        $this->DateModified = new DateTime();
-        return $this->db->update("campaigns", $this, array("CampaignId" => $this->CampaignId));
+
+        echo($uid."\n");
+        echo($cid."\n");
+       
+     
+
+
+        $datestring = "%Y-%m-%d %h:%i:%a";
+
+            // get stytem current time
+            $time = time();
+            $cur_date = mdate($datestring, $time);
+         
+
+        $data = array(
+
+                'Title' => $title,
+                'UserId' =>$uid,
+                'CategoryId' => $categoryid,
+                'image' => $image,
+                'EndDate' => $endDate,
+                'Amount' => $amount,
+                'Beneficiary' => $fullname,
+                'Description' => $description,
+                'StatusId' => $statusId,
+                'DateModified' => $cur_date,
+
+            );
+
+            $where = "CampaignId = ".$cid."";
+
+            return $this->db->update('campaigns', $data, $where);
     }
 
 

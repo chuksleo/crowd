@@ -48,9 +48,9 @@ echo validation_errors('<span class="error">', '</span>');
           <div class="form-group col-md-6">
             <label for="state">Category Status</label>
                 <select name="status" class="form-control" required>
-                                                    <option value="" selected>Choose...</option>
+                                                   
                                                     <option value="On" selected>Active</option>
-                                                    <option value="Off" selected>Disabled</option>
+                                                    <option value="Off">Disabled</option>
                    </select>                                 
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Please select a Category.</div>

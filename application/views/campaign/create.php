@@ -79,7 +79,7 @@ echo validation_errors('<span class="error">', '</span>');
       <div class="form-group col-md-6">
        
         <?= form_label('Campaign End Date', 'EndDate') ?>
-        <input name="EndDate"  type='text' id="dpd2"  value="<?php echo isset($campaign->EndDate) ? $campaign->EndDate : "" ?>" class='datepicker-here form-control' data-language='en'  required />
+        <input name="EndDate"  type='text' id="dpd2"  value="" class='datepicker-here form-control' data-language='en'  required />
       
       </div>
      <?php  } ?>

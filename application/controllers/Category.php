@@ -78,13 +78,15 @@ class Category extends CI_Controller {
         $data['action'] = "create";
         if($this->input->post()){
             $uid = $this->ion_auth->get_user_id();
-            $config['upload_path'] = './uploads/category/';
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|mp4';
-            $config['max_size'] = 20048; // Need to define properly    
+            $config['upload_path'] = './assets/uploads/files/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = 3048; // Need to define properly              
             $config['file_name'] = time().$uid;       
             $this->load->library('upload', $config);
             $this->upload->do_upload('userfile1');
-            $pic = $this->upload->data();           
+
+            $pic = $this->upload->data();
+                    
             
           $this->project_category_model->create_category($this->input->post('title'), $this->input->post('status'), $pic['file_name'] );
             redirect('/admin/all-categories', 'refresh');
@@ -118,22 +120,33 @@ class Category extends CI_Controller {
     public function edit($id) {
         $data['is_loggedin'] = $this->ion_auth->logged_in();
         $data['action'] = "edit";
-       
+        $data['category'] = $this->project_category_model->get_category_byId($id);
+        $image = $data['category']->icon;
         if($this->input->post()){
             
         	$uid = $this->ion_auth->get_user_id();
-            $config['upload_path'] = './uploads/category/';
+            $config['upload_path'] = './assets/uploads/files/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 20048; // Need to define properly    
             $config['file_name'] = time().$uid;       
             $this->load->library('upload', $config);
             $this->upload->do_upload('userfile1');
+            
             $pic = $this->upload->data();
+            if($_FILES['userfile1']['size'] == 0){
+                $image = $image;
+            }else{
+                $image = $pic['file_name'];
+            }            
+           
             
-          
-            
-       $this->project_category_model->update_category($this->input->post('title'), $this->input->post('status'), $pic['file_name'], $id);
-            // redirect('/admin/all-categories', 'refresh');
+            if($this->project_category_model->update_category($this->input->post('title'), $this->input->post('status'), $image, $id)){
+
+                redirect('/admin/all-categories', 'refresh');
+            }else{
+                echo "Error savong";
+            }
+            //
         }
        
         
