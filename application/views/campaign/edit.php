@@ -16,7 +16,8 @@ echo validation_errors('<span class="error">', '</span>');
         <div class="content">
                 <div class="container">
                     <div class="page-title">
-                        <h3><?php echo $action ?> Campaign</h3>
+                        <h3><?php echo ucwords($action)  ?> Campaign</h3>
+                        <p> <?php echo $campaign->Title ?>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -51,9 +52,9 @@ echo validation_errors('<span class="error">', '</span>');
           <div class="form-group col-md-6">
             <label for="state">Select Category</label>
                 <select name="Category" class="form-control" required>
-                                                    <option value="" selected>Choose...</option>
+                                                   
                                                     <?php foreach($categories as $cat):?>
-                                                    <option value="<?php echo $cat->catId ?>"><?php echo $cat->title ?></option>
+                                                    <option value="<?php echo $cat->catId ?>" <?php if($cat->catId == $campaign->CategoryId){ echo "Selected";} ?> ><?php echo $cat->title ?></option>dddd
                                                    <?php endforeach ?>
                </select>
                <div class="valid-feedback">Looks good!</div>
@@ -70,7 +71,7 @@ echo validation_errors('<span class="error">', '</span>');
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">₦</div>
                                                         </div>
-                                                        <input name="Amount" id="Amount" type="text" class="form-control" value="<?php echo $campaign->Amount ?>" placeholder="0000" required >
+                                                        <input name="Amount" id="Amount" type="text" class="form-control" value="<?php echo $campaign->Amount ?>" placeholder="0000" required <?php if(!$this->ion_auth->is_admin()){echo "disabled";}?>>
                                                         <div class="input-group-append">
                                                             <div class="input-group-text">.00</div>
                                                         </div>
@@ -82,7 +83,7 @@ echo validation_errors('<span class="error">', '</span>');
       <div class="form-group col-md-6">
        
         <?= form_label('Campaign End Date', 'EndDate') ?>
-        <input name="EndDate"  type='text' id="dpd2"  value="<?php echo $campaign->EndDate ?>" class='datepicker-here form-control' data-language='en' required />
+        <input name="EndDate"  type='text' id="dpd2"  value="<?php echo isset($campaign->EndDate) ? $campaign->EndDate : "" ?>" class='datepicker-here form-control' data-language='en' required <?php if(!$this->ion_auth->is_admin()){echo "disabled";}?> />
       
       </div>
     
@@ -90,7 +91,7 @@ echo validation_errors('<span class="error">', '</span>');
         <?= form_label('Campaign Description', 'description') ?>               
         <?php echo $this->ckeditor->editor('description', isset($campaign->Description) ? $campaign->Description : ""); ?> <?php echo form_error('description', '<p class="error">'); ?>
        </div>
-
+       <input type="hidden" value="<?php echo $campaign->UserId ?>" name="user">
 
         </div>
         

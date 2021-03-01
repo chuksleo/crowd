@@ -67,6 +67,7 @@ $route['donate/(:any)/(:num)'] = 'donation/pay/$1/$2';
 
 
 $route['admin/dashboard'] = 'admin';
+$route['admin/user-campaign/edit/(:num)'] = 'campaign/edit/$1';
 $route['admin/all-categories'] = 'category';
 $route['admin/all-campaign'] = 'campaign/all';
 $route['admin/all-donation'] = 'donation/all';

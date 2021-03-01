@@ -89,9 +89,11 @@ class Campaign extends CI_Controller {
 
 
     public function getFormatedDate ($mydate) {
-
-            $newdate = DateTime::createFromFormat('d/m/Y', $mydate);
-            $formatedDate = $newdate->format('Y-m-d H:i:s');
+        $formatedDate = DateTime::createFromFormat('m/d/Y', $mydate)->format('Y-m-d h:i:s');
+        //$newdate = DateTime::createFromFormat('d/m/Y', $mydate);
+        // echo "thIS IS daTE";
+        // echo $formatedDate;
+        //$formatedDate = $newdate->format('Y-m-d H:i:s');
             
         return $formatedDate;
 
@@ -107,25 +109,32 @@ class Campaign extends CI_Controller {
         $data['action'] = "create";
         if($this->ion_auth->logged_in()){
              if($this->input->post()){
-            $uid = $this->ion_auth->get_user_id();
-            $config['upload_path'] = './uploads/campaign/profile/';
-            $config['allowed_types'] = 'gif|jpg|png|jpeg|mp4';
-            $config['max_size'] = 20048; // Need to define properly              
-            $config['file_name'] = time().$uid;       
-            $this->load->library('upload', $config);
-            $this->upload->do_upload('userfile1');
-            $pic = $this->upload->data();
-           
-            $EndDate = $this->getFormatedDate($this->input->post("EndDate"));
-            
-            $this->campaign_model->create_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 5, $uid, $pic['file_name'] );
-            redirect('/campaign', 'refresh');
-        }
+                $uid = $this->ion_auth->get_user_id();
+                $config['upload_path'] = './uploads/campaign/profile/';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|mp4';
+                $config['max_size'] = 20048; // Need to define properly              
+                $config['file_name'] = time().$uid;       
+                $this->load->library('upload', $config);
+                $this->upload->do_upload('userfile1');
+                $pic = $this->upload->data();
+               
+                $EndDate = $this->getFormatedDate($this->input->post("EndDate"));
+                
+                $this->campaign_model->create_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 5, $uid, $pic['file_name'] );
+                if($this->ion_auth->is_admin()){ 
+                    redirect('/admin/all-campaign', 'refresh');
+                }else{
+                    redirect('/campaign', 'refresh');
+                }
+              
+                
+            }
         $path = './js/ckfinder';
         $width = '850px';
         $data['categories'] = $this->project_category_model->getCategories();
         $this->editor($path, $width);
         $this->load->view("campaign/create" , $data);
+
 
         }else{
             redirect('/auth/login', 'refresh');
@@ -158,11 +167,15 @@ class Campaign extends CI_Controller {
     public function edit($id) {
         $data['is_loggedin'] = $this->ion_auth->logged_in();
         $data['action'] = "edit";
+        $data['categories'] = $this->project_category_model->getCategories();
+        $data['campaign'] = $this->campaign_model->get_campaign_byId($id);
+        $EndDate = $data['campaign']->EndDate;
        
-        if($this->input->post()){
-           
+        $image = $data['campaign']->image;
+        if($this->input->post()){          
             
-            $uid = $this->ion_auth->get_user_id();
+            $uid = $this->input->post('user');
+            
             $config['upload_path'] = './uploads/campaign/profile/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg|mp4';
             $config['max_size'] = 20048; // Need to define properly              
@@ -170,14 +183,29 @@ class Campaign extends CI_Controller {
             $this->load->library('upload', $config);
             $this->upload->do_upload('userfile1');
             $pic = $this->upload->data();
-            $EndDate = $this->getFormatedDate($this->input->post("EndDate"));
-            $campaignId = $this->campaign_model->update_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 1, $uid, $id );
-            redirect('/campaign', 'refresh');
+            if($_FILES['userfile1']['size'] == 0){
+                $image = $image;
+            }else{
+                $image = $pic['file_name'];
+            }            
+            
+            if(!$EndDate or $EndDate == "0000-00-00 00:00:00" ){
+                $EndDate = $this->getFormatedDate($this->input->post("EndDate"));
+            }
+           
+            
+            $campaignId = $this->campaign_model->update_campaign($this->input->post('title'), $this->input->post('Category'), $this->input->post('Amount'), $EndDate, $this->input->post('FullName'), $this->input->post('description'), 5, $uid, $image, $id );
+            if($this->ion_auth->is_admin()){
+               
+                redirect('/admin/all-campaign', 'refresh');
+            }else{
+               
+                redirect('/campaign', 'refresh');
+            }
         }
         $path = './js/ckfinder';
         $width = '850px';
-        $data['categories'] = $this->project_category_model->getCategories();
-        $data['campaign'] = $this->campaign_model->get_campaign_byId($id);
+        
         // print_r($data['campaign']);
         $this->editor($path, $width);
         $this->load->view("campaign/edit" , $data);

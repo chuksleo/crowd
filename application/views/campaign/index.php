@@ -23,6 +23,7 @@ $this->load->view('section/admin/header', $data);
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Title</th>
+                                                <th>Category</th>
                                                 <th>Goal</th>
                                                 <th>Funds Raised</th>
                                                 <th>Status</th>
@@ -37,6 +38,7 @@ $this->load->view('section/admin/header', $data);
                                             <tr>
                                                 <td><?php echo $campaign->CampaignId?></td>
                                                 <td><?php echo $campaign->Title?></td>
+                                                 <td><?php echo $campaign->title?></td>
                                                 <td><?php echo $campaign->Amount?></td>
                                                 <td><?php echo $campaign->Current ?></td>
                                                 <td><?php echo $campaign->StatusTitle ?></td>

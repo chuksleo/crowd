@@ -23,6 +23,7 @@ $this->load->view('section/admin/header', $data);
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Title</th>
+                                                <th>Image</th>
                                                 <th>Status</th>
                                                
                                                 <th>Action</th>
@@ -34,6 +35,7 @@ $this->load->view('section/admin/header', $data);
                                             <tr>
                                                 <td><?php echo $category->catId ?></td>
                                                 <td><?php echo $category->title ?></td>
+                                                <td><img src="<?php echo base_url() ?>assets/uploads/files/<?php echo $category->icon ?>" width="100px"> </td>
                                                 <td><?php echo $category->status?></td>
                                                 
                                                    <td><a href="<?php base_url() ?>category/edit/<?php echo $category->catId ?>" class="btn btn-square btn-primary mb-2"> Edit</a>   <a href="<?php base_url() ?>category/delete/<?php echo $category->catId ?>" class="btn btn-square btn-primary mb-2"> Delete</a></td>

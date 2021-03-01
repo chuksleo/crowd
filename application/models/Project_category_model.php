@@ -16,8 +16,7 @@ class Project_category_model extends CI_Model {
     public $catId;
     public $title;
     public $icon;
-    public $DateCreated;
-    public $DateModified;
+    public $status;
     
     /**
      * Gets all project categories in db 
@@ -45,9 +44,7 @@ class Project_category_model extends CI_Model {
     public function create_category($title, $status, $icon){  
         $this->title = $title; 
         $this->status = $status; 
-        $this->icon = $icon;       
-        $this->DateCreated = new DateTime();
-        $this->DateModified = new DateTime();
+        $this->icon = $icon;        
         $this->db->insert('categories', $this);
         return $this->db->insert_id();
     }
@@ -55,12 +52,19 @@ class Project_category_model extends CI_Model {
 
     
     public function update_category($title, $status, $icon, $catId){
-        $this->title = $title; 
-        $this->status = $status; 
-        $this->icon = $icon;       
-       $this->DateCreated = new DateTime();
-        $this->DateModified = new DateTime();
-       return $this->db->update("categories", $this, array("catId" => $this->catId));
+
+         $data = array(
+
+                'title' => $title,
+                'status' =>$status,                
+                'icon' => $icon,              
+
+            );
+
+            $where = "catId = ".$catId."";
+
+            return $this->db->update('categories', $data, $where);
+       
     }
 
 

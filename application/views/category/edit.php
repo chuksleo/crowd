@@ -30,9 +30,9 @@ echo validation_errors('<span class="error">', '</span>');
             <div class="media-object-section main-section img-preview">
                 <div class="form-group">   
                 <?= form_label('Category Image', 'pro_pic', array('class' => '')) ?> <br>
-                <?= form_upload('userfile1', 'pro_pic', array('class' => 'btn btn-primary ', 'value' => $category->image , 'accept' => 'image/*', 'onchange' => 'previewFile()')) ?>
+                <?= form_upload('userfile1', 'pro_pic', array('class' => 'btn btn-primary ', 'value' => $category->icon , 'accept' => 'image/*', 'onchange' => 'previewFile()')) ?>
                  </div>
-                <img id="Pro_prev" src="<?php echo isset($category->image) ? $category->image : "" ?>"  width="100%" alt="Image preview..." class="hide thumbnail">
+                <img id="Pro_prev" src="<?php echo base_url() ?>assets/uploads/files/<?php echo $category->icon ?>"  width="100%" alt="Image preview..." class="hide thumbnail">
 
             </div>           
         </div>
@@ -48,9 +48,9 @@ echo validation_errors('<span class="error">', '</span>');
           <div class="form-group col-md-6">
             <label for="state">Category Status</label>
                 <select name="status" class="form-control" required>
-                                                    <option value="" selected>Choose...</option>
+                                                 
                                                     <option value="On" selected>Active</option>
-                                                    <option value="Off" selected>Disabled</option>
+                                                    <option value="Off">Disabled</option>
                    </select>                                 
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Please select a Category.</div>
