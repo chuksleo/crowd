@@ -55,8 +55,9 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
                         <div class="project_details_right">
                             <div class="project_details_right_top">
                                 <ul class="project_details_rate_list list-unstyled">
-                                    <li><span>$<?php echo $campaign->Current ?></span>Raised</li>
+                                    <li><span>₦<?php echo $campaign->Current ?></span>Raised</li>
                                     <li><span><?php echo $donors ?></span>Donors</li>
+                                    <li><span><?php //echo $likes ?></span>Likes</li>
                                 </ul>
                             </div>
                             <div class="progress-levels project_details_progress-levels">
@@ -189,8 +190,8 @@ $daysleft = $this->campaign_model->getDaysLeft($campaign->EndDate);
               </li>
 
 
-
-              <li class="share-list"> <a href="mailto:?Subject=<?php echo $campaign->title ?>&Body=<?php echo $campaign->Description ?> <?php echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/email.png"></a>
+              <?php $bodytext = htmlspecialchars($campaign->Description, ENT_QUOTES); ?>
+              <li class="share-list"> <a href="mailto:?Subject=<?php echo $campaign->title ?>&Body=<?php echo $bodytext ; echo $url ?>" target="_blank"><img src="<?php echo base_url() ?>assets/images/icon/email.png"></a>
                  <p><label>Email</label></p>
               </li>
 

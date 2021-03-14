@@ -66,7 +66,7 @@
                         <div class="">
                             <?php echo ($this->settings_model->getStaticContent('home_text_one')) ?>                         
                     
-                                
+                            <p> Wecome to donofund </p>    
                             </div>
                             
                         </div>
